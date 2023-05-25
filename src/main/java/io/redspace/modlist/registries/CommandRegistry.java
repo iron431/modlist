@@ -1,6 +1,6 @@
-package io.redspace.ironsspellbooks.registries;
+package io.redspace.modlist.registries;
 
-import io.redspace.ironsspellbooks.command.*;
+import io.redspace.modlist.command.*;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;

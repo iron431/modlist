@@ -1,9 +1,9 @@
-package io.redspace.ironsspellbooks.command;
+package io.redspace.modlist.command;
 
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import io.redspace.ironsspellbooks.Modlist;
+import io.redspace.modlist.Modlist;
 import net.minecraft.ChatFormatting;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
@@ -17,10 +17,10 @@ import java.io.FileWriter;
 
 public class GenerateModList {
 
-    private static final SimpleCommandExceptionType ERROR_FAILED = new SimpleCommandExceptionType(Component.translatable("commands.irons_spellbooks.generate_mod_list.failed"));
+    private static final SimpleCommandExceptionType ERROR_FAILED = new SimpleCommandExceptionType(Component.translatable("commands.modlist.generate_mod_list.failed"));
 
     public static void register(CommandDispatcher<CommandSourceStack> pDispatcher) {
-        pDispatcher.register(Commands.literal("generateModList").requires((p_138819_) -> {
+        pDispatcher.register(Commands.literal("modlist").requires((p_138819_) -> {
             return p_138819_.hasPermission(2);
         }).executes((commandContext) -> {
             return generateModList(commandContext.getSource());
@@ -51,7 +51,7 @@ public class GenerateModList {
                 return style.withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_FILE, file.getAbsolutePath()));
             });
 
-            source.sendSuccess(Component.translatable("commands.irons_spellbooks.generate_mod_list.success", component), true);
+            source.sendSuccess(Component.translatable("commands.modlist.generate_mod_list.success", component), true);
 
         } catch (Exception e) {
             Modlist.LOGGER.info(e.getMessage());

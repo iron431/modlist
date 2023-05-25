@@ -1,4 +1,4 @@
-package io.redspace.ironsspellbooks;
+package io.redspace.modlist;
 
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.common.MinecraftForge;

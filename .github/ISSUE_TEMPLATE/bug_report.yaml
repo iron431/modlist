@@ -49,9 +49,9 @@ body:
       description: If this was a crash, grab [minecraft instance]/logs/debug.log, upload it as a [gist](https://gist.github.com/) and paste the link here
       placeholder: https://gist.github.com/iron431/e23d75f
   - type: input
-    id: irons-spellbooks-version
+    id: modlist-version
     attributes:
-      label: Iron's Spells N Spellbooks version
+      label: Modlist version
       placeholder: "example: 1.0.1"
     validations:
       required: true

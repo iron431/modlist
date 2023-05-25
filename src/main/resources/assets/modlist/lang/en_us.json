@@ -1,0 +1,4 @@
+{
+  "commands.modlist.generate_mod_list.failed": "Failed to generate mod list",
+  "commands.modlist.generate_mod_list.success": "Saved mod list as %s"
+}

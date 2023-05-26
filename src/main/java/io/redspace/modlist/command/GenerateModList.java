@@ -9,6 +9,8 @@ import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.network.chat.ClickEvent;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraftforge.fml.ModList;
 
 import java.io.BufferedWriter;
@@ -17,7 +19,7 @@ import java.io.FileWriter;
 
 public class GenerateModList {
 
-    private static final SimpleCommandExceptionType ERROR_FAILED = new SimpleCommandExceptionType(Component.translatable("commands.modlist.generate_mod_list.failed"));
+    private static final SimpleCommandExceptionType ERROR_FAILED = new SimpleCommandExceptionType(new TranslatableComponent("commands.modlist.generate_mod_list.failed"));
 
     public static void register(CommandDispatcher<CommandSourceStack> pDispatcher) {
         pDispatcher.register(Commands.literal("modlist").requires((p_138819_) -> {
@@ -54,7 +56,7 @@ public class GenerateModList {
             sb.append(",");
             sb.append(iModInfo.getOwningFile().getFile().getFileName());
             sb.append(",");
-            iModInfo.getModURL().ifPresent(sb::append);
+            //Not available in 1.18.2 iModInfo.getModURL().ifPresent(sb::append);
             sb.append(",");
             iModInfo.getConfig().getConfigElement("displayURL").ifPresent(sb::append);
             sb.append(",");
@@ -68,11 +70,11 @@ public class GenerateModList {
             writer.write(sb.toString());
             writer.close();
 
-            Component component = Component.literal(file.getName()).withStyle(ChatFormatting.UNDERLINE).withStyle((style) -> {
+            Component component = new TextComponent(file.getName()).withStyle(ChatFormatting.UNDERLINE).withStyle((style) -> {
                 return style.withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_FILE, file.getAbsolutePath()));
             });
 
-            source.sendSuccess(Component.translatable("commands.modlist.generate_mod_list.success", component), true);
+            source.sendSuccess(new TranslatableComponent("commands.modlist.generate_mod_list.success", component), true);
 
         } catch (Exception e) {
             Modlist.LOGGER.info(e.getMessage());

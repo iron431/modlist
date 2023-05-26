@@ -14,6 +14,19 @@
 
 ## General
 
+Modlist adds a /modlist command to the game that helps when reporting issues or sharing the details of a modpack.
+
+- It will create a file in the minecraft folder named: modlist.txt
+- The file will contain a list of all mods currently loaded into the game
+- The generated CSV file will have 1 mod per line with the following format:
+  - mod_id
+  - mod_name
+  - mod_version
+  - mod_file
+  - mod_url
+  - display_url
+  - issue_tracker_url
+
 If you love the mod and would like to help support its ongoing development consider becoming a patron
 
 <a href="https://www.patreon.com/Iron431"><img src="https://shields.io/badge/-Patreon-f86754?style=for-the-badge&amp;logo=patreon&amp;logoColor=white" alt="" width="106" height="28" /></a>

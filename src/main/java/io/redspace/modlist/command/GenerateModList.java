@@ -56,7 +56,7 @@ public class GenerateModList {
             sb.append(",");
             iModInfo.getModURL().ifPresent(sb::append);
             sb.append(",");
-            iModInfo.getOwningFile().getConfig().getConfigElement("displayURL").ifPresent(sb::append);
+            iModInfo.getConfig().getConfigElement("displayURL").ifPresent(sb::append);
             sb.append(",");
             iModInfo.getOwningFile().getConfig().getConfigElement("issueTrackerURL").ifPresent(sb::append);
             sb.append("\n");
@@ -72,7 +72,7 @@ public class GenerateModList {
                 return style.withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_FILE, file.getAbsolutePath()));
             });
 
-            source.sendSuccess(Component.translatable("commands.irons_spellbooks.generate_mod_list.success", component), true);
+            source.sendSuccess(Component.translatable("commands.modlist.generate_mod_list.success", component), true);
 
         } catch (Exception e) {
             Modlist.LOGGER.info(e.getMessage());

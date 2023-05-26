@@ -30,6 +30,21 @@ public class GenerateModList {
     private static int generateModList(CommandSourceStack source) throws CommandSyntaxException {
         var sb = new StringBuilder();
 
+        sb.append("mod_id");
+        sb.append(",");
+        sb.append("mod_name");
+        sb.append(",");
+        sb.append("mod_version");
+        sb.append(",");
+        sb.append("mod_file");
+        sb.append(",");
+        sb.append("mod_url");
+        sb.append(",");
+        sb.append("display_url");
+        sb.append(",");
+        sb.append("issue_tracker_url");
+        sb.append("\n");
+
         ModList.get().getMods().forEach(iModInfo -> {
             sb.append(iModInfo.getModId());
             sb.append(",");
@@ -38,6 +53,12 @@ public class GenerateModList {
             sb.append(iModInfo.getVersion());
             sb.append(",");
             sb.append(iModInfo.getOwningFile().getFile().getFileName());
+            sb.append(",");
+            iModInfo.getModURL().ifPresent(sb::append);
+            sb.append(",");
+            iModInfo.getOwningFile().getConfig().getConfigElement("displayURL").ifPresent(sb::append);
+            sb.append(",");
+            iModInfo.getOwningFile().getConfig().getConfigElement("issueTrackerURL").ifPresent(sb::append);
             sb.append("\n");
         });
 
@@ -51,7 +72,7 @@ public class GenerateModList {
                 return style.withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_FILE, file.getAbsolutePath()));
             });
 
-            source.sendSuccess(Component.translatable("commands.modlist.generate_mod_list.success", component), true);
+            source.sendSuccess(Component.translatable("commands.irons_spellbooks.generate_mod_list.success", component), true);
 
         } catch (Exception e) {
             Modlist.LOGGER.info(e.getMessage());
